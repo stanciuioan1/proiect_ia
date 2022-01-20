@@ -1,7 +1,12 @@
 # Import module
+from numbers import Complex
+import cmath
+from this import d
 from tkinter import *
 import math
 from tokenize import Double 
+import differential_evolution as de
+
 # Create object
 root = Tk()
   
@@ -39,19 +44,19 @@ def get_value_in_point(ecuation,x):
 
 def get_roots(ecuation):
     #this is the place to calculate roots
-    roots=[1,2,3]
+    roots = de.differentialEvolution(ecuation)
     return roots
 
 # Change the label text
 def add_new_term():
     global text_ecuation
     if(clicked.get()=="poly"):
-        print("(x ^ "+power.get()+") * (" + coef_real.get()+ " +  "+coef_imaginar.get() +" * i)\n")
-        ecuation.append((clicked.get(), coef_real.get(), coef_imaginar.get(), power.get()))
+        print("(x ^ "+power.get()+") * (" + coef_real.get()+ " +  "+ '0' if coef_imaginar.get() == '' else coef_imaginar.get() +" * i)\n")
+        ecuation.append((clicked.get(), '0' if coef_real.get() == '' else coef_real.get(), '0' if coef_imaginar.get() == '' else coef_imaginar.get(), power.get()))
         text_ecuation = text_ecuation + "(x ^ "+power.get()+") * (" + coef_real.get()+ " +  "+coef_imaginar.get() +" * i)" + " + "
     else:
         print(clicked.get()+"(x) * (" + coef_real.get()+ " +  "+coef_imaginar.get() +" * i)\n")
-        ecuation.append((clicked.get(), coef_real.get(), coef_imaginar.get()))
+        ecuation.append((clicked.get(), '0' if coef_real.get() == '' else coef_real.get(), '0' if coef_imaginar.get() == '' else coef_imaginar.get()))
         text_ecuation = text_ecuation + clicked.get()+"(x) * (" + coef_real.get()+ " +  "+coef_imaginar.get() +" * i)" + " + "
     coef_real.delete(0,100)
     coef_imaginar.delete(0,100)
