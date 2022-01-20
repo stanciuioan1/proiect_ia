@@ -11,6 +11,7 @@ root.geometry( "1200x600" )
 ecuation=[]
 ecuation_label = Entry(root, width=200)
 ecuation_label.grid(row=1, column = 10)
+roots_label = Entry(root, width=50)
 text_ecuation = " "
 
 def get_value_in_point(ecuation,x):
@@ -61,6 +62,7 @@ def add_new_term():
 
 def finish_ecuation():
     global text_ecuation
+    global roots_label
     print("am terminat")
     text_ecuation =  text_ecuation + "0 = 0"
     ecuation_label.delete(0,1000)
@@ -68,7 +70,7 @@ def finish_ecuation():
     print(ecuation)
 
     roots = get_roots(ecuation)
-    roots_label = Entry(root, width=50)
+    
     roots_label.grid(row=5, column = 8,columnspan=2)
     text="Roots are: "
     for i in roots:
@@ -82,6 +84,7 @@ def reload_everything():
     coef_imaginar.delete(0,100)
     power.delete(0,100)
     ecuation_label.delete(0,100)
+    roots_label.delete(0,100)
     ecuation = []
 
 # Dropdown menu options
