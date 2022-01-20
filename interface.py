@@ -69,7 +69,7 @@ def finish_ecuation():
 
     roots = get_roots(ecuation)
     roots_label = Entry(root, width=50)
-    roots_label.grid(row=5, column = 0)
+    roots_label.grid(row=5, column = 10)
     text="Roots are: "
     for i in roots:
         text = text + str(i)+", "
