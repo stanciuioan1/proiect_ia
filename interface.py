@@ -1,6 +1,7 @@
 # Import module
 from tkinter import *
-  
+import math
+from tokenize import Double 
 # Create object
 root = Tk()
   
@@ -11,6 +12,29 @@ ecuation=[]
 ecuation_label = Entry(root, width=200)
 ecuation_label.grid(row=2, column = 10)
 text_ecuation = " "
+
+def get_value_in_point(ecuation,x):
+    result_real = 0
+    result_imag = 0
+    for i in ecuation:
+        if(i[0]== "sin"):
+            result_real = result_real + i[1] * math.sin(x)
+            result_imag = result_imag + i[2] * math.sin(x)
+        if(i[0]== "cos"):
+            result_real = result_real + i[1] * math.cos(x)
+            result_imag = result_imag + i[2] * math.cos(x)
+        if(i[0]== "tg"):
+            result_real = result_real + i[1] * math.tan(x)
+            result_imag = result_imag + i[2] * math.tan(x)
+        if(i[0]== "ctg"):
+            result_real = result_real + i[1] * 1/math.tan(x)
+            result_imag = result_imag + i[2] * 1/math.tan(x)
+        if(i[0]== "poly"):
+            result_real = result_real + i[1] * x ** Double(i[3])
+            result_imag = result_imag + i[2] * x ** Double(i[3])
+
+    return result_real, result_imag
+
 
 def get_roots(ecuation):
     #this is the place to calculate roots
