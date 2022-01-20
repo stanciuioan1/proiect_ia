@@ -10,7 +10,7 @@ root.geometry( "1200x600" )
 
 ecuation=[]
 ecuation_label = Entry(root, width=200)
-ecuation_label.grid(row=2, column = 10)
+ecuation_label.grid(row=1, column = 10)
 text_ecuation = " "
 
 def get_value_in_point(ecuation,x):
@@ -69,13 +69,20 @@ def finish_ecuation():
 
     roots = get_roots(ecuation)
     roots_label = Entry(root, width=50)
-    roots_label.grid(row=5, column = 10)
+    roots_label.grid(row=5, column = 8,columnspan=2)
     text="Roots are: "
     for i in roots:
         text = text + str(i)+", "
     roots_label.insert(0, text)
 
 
+def reload_everything():
+    global ecuation
+    coef_real.delete(0,100)
+    coef_imaginar.delete(0,100)
+    power.delete(0,100)
+    ecuation_label.delete(0,100)
+    ecuation = []
 
 # Dropdown menu options
 options = [
@@ -125,8 +132,8 @@ power.grid(row=0, column=8)
 button_add_term = Button( root , text = " + " , command = add_new_term).grid(row=0, column=9)
 button_finish_ecuation = Button( root , text = " = " , command = finish_ecuation).grid(row=1, column=9)
 # Create Label
-
-
+B = Button(root, text ="Reload", command = reload_everything)
+B.grid(row=4, column=3)
   
 # Execute tkinter
 root.mainloop()
