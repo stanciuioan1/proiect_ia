@@ -54,10 +54,6 @@ def add_new_term():
         print("(x ^ "+power.get()+") * (" + coef_real.get()+ " +  "+ '0' if coef_imaginar.get() == '' else coef_imaginar.get() +" * i)\n")
         ecuation.append((clicked.get(), '0' if coef_real.get() == '' else coef_real.get(), '0' if coef_imaginar.get() == '' else coef_imaginar.get(), power.get()))
         text_ecuation = text_ecuation + "(x ^ "+power.get()+") * (" + coef_real.get()+ " +  "+coef_imaginar.get() +" * i)" + " + "
-    else:
-        print(clicked.get()+"(x) * (" + coef_real.get()+ " +  "+coef_imaginar.get() +" * i)\n")
-        ecuation.append((clicked.get(), '0' if coef_real.get() == '' else coef_real.get(), '0' if coef_imaginar.get() == '' else coef_imaginar.get()))
-        text_ecuation = text_ecuation + clicked.get()+"(x) * (" + coef_real.get()+ " +  "+coef_imaginar.get() +" * i)" + " + "
     coef_real.delete(0,100)
     coef_imaginar.delete(0,100)
     power.delete(0,100)
@@ -94,10 +90,6 @@ def reload_everything():
 
 # Dropdown menu options
 options = [
-    "sin",
-    "cos",
-    "tg",
-    "ctg",
     "poly"
 ]
   
@@ -131,8 +123,6 @@ drop.grid(row=0, column=5)
 LA2 = Label(root, text=" * x")
 LA2.grid(row=0, column=6)
 
-LA_power = Label(root, text="(only for poly) ^ ")
-LA_power.grid(row=0, column=7)
 
 power = Entry(root)
 power.grid(row=0, column=8)
